@@ -9,7 +9,7 @@ function setCardType(type) {
   const colors = {
     visa: ["#436D99", "#2D57F2"],
     mastercard: ["#DF6F29", "#C69347"],
-    rocketseat: ["yellow", "red"],
+    rocketseat: ["#0D6F5D", "#C3129C"],
     defaut: ["black", "gray"],
   }
   ccBgColor01.setAttribute("fill", colors[type][0])
@@ -20,7 +20,7 @@ function setCardType(type) {
 // Para trocar a cor do cartão:
 // setCardType("visa")
 //para executar no DOM: COMENTAR A LINHA DE CIMA E DESCOMENTAR A DE BAIXO
-// globalThis.setCardType = setCardType
+globalThis.setCardType = setCardType
 // globalThis.setCardType("visa")
 // globalThis.setCardType("mastercard")
 // globalThis.setCardType("default")
@@ -53,7 +53,7 @@ const expirationDatePattern = {
 const expirationDateMasked = IMask(expirationDate, expirationDatePattern)
 
 // card number
-const cardNumber = document.querySelector("#card-numer")
+const cardNumber = document.querySelector("#card-number")
 const cardNumberPattern = {
   mask: [
     {
@@ -71,4 +71,13 @@ const cardNumberPattern = {
       cardtype: "default",
     },
   ],
+  dispatch: function (appended, dynamicMasked) {
+    const number = (dynamicMasked.value + appended).replace(/\D/g, "")
+    const foundMask = dynamicMasked.compiledMasks.find(function (item) {
+      return number.match(item.regex)
+    })
+    console.log(foundMask)
+    return foundMask
+  },
 }
+const cardNumberMasked = IMask(cardNumber, cardNumberPattern)
