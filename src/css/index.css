@@ -2,7 +2,7 @@
 @import "credit-card.css";
 @import "form.css";
 
-@media (max-width: 420px) {
+@media screen (max-width: 420px) {
   :root {
     font-size: 50%;
   }
