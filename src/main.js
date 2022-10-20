@@ -7,10 +7,19 @@ const ccLogo = document.querySelector(".cc-logo span:nth-child(2) img")
 
 function setCardType(type) {
   const colors = {
+    default: ["black", "gray"],
     visa: ["#436D99", "#2D57F2"],
     mastercard: ["#DF6F29", "#C69347"],
     rocketseat: ["#0D6F5D", "#C3129C"],
-    defaut: ["black", "gray"],
+    amex: ["#7CB0C0", "#5474EB"],
+    cielo: ["#A99E46", "#D32E48"],
+    hipercard: ["#822124", "#A1585B"],
+    diners: ["#D32E48", "#2D57F2"],
+    jcb: ["#D32E48", "#2D57F2"],
+    discover: ["#D32E48", "#2D57F2"],
+    maestro: ["#D32E48", "#2D57F2"],
+    unionpay: ["#A1585B", "#0D6F5D"],
+    paypal: ["#5474EB", "#0D6F5D"],
   }
   ccBgColor01.setAttribute("fill", colors[type][0])
   ccBgColor02.setAttribute("fill", colors[type][1])
@@ -19,8 +28,8 @@ function setCardType(type) {
 
 // Para trocar a cor do cartão:
 // setCardType("visa")
-//para executar no DOM: COMENTAR A LINHA DE CIMA E DESCOMENTAR A DE BAIXO
-globalThis.setCardType = setCardType
+// para executar no DOM: COMENTAR A LINHA DE CIMA E DESCOMENTAR A DE BAIXO
+// globalThis.setCardType = setCardType
 // globalThis.setCardType("visa")
 // globalThis.setCardType("mastercard")
 // globalThis.setCardType("default")
@@ -58,6 +67,12 @@ const cardNumberPattern = {
   mask: [
     {
       mask: "0000 0000 0000 0000",
+      regex:
+        /^(4011(78|79)|43(1274|8935)|45(1416|7393|763(1|2))|50(4175|6699|67[0-7][0-9]|9000)|50(9[0-9][0-9][0-9])|627780|63(6297|6368)|650(03([^4])|04([0-9])|05(0|1)|05([7-9])|06([0-9])|07([0-9])|08([0-9])|4([0-3][0-9]|8[5-9]|9[0-9])|5([0-9][0-9]|3[0-8])|9([0-6][0-9]|7[0-8])|7([0-2][0-9])|541|700|720|727|901)|65165([2-9])|6516([6-7][0-9])|65500([0-9])|6550([0-5][0-9])|655021|65505([6-7])|6516([8-9][0-9])|65170([0-4]))/,
+      cardtype: "cielo",//elo
+    },
+    {
+      mask: "0000 0000 0000 0000",
       regex: /^4\d{0,15}/,
       cardtype: "visa",
     },
@@ -68,66 +83,84 @@ const cardNumberPattern = {
     },
     {
       mask: "0000 0000 0000 0000",
-      regex:
-        /^4011(78|79)|^43(1274|8935)|^45(1416|7393|763(1|2))|^50(4175|6699|67[0-6][0-9]|677[0-8]|9[0-8][0-9]{2}|99[0-8][0-9]|999[0-9])|^627780|^63(6297|6368|6369)|^65(0(0(3([1-3]|[5-9])|4([0-9])|5[0-1])|4(0[5-9]|[1-3][0-9]|8[5-9]|9[0-9])|5([0-2][0-9]|3[0-8]|4[1-9]|[5-8][0-9]|9[0-8])|7(0[0-9]|1[0-8]|2[0-7])|9(0[1-9]|[1-6][0-9]|7[0-8]))|16(5[2-9]|[6-7][0-9])|50(0[0-9]|1[0-9]|2[1-9]|[3-4][0-9]|5[0-8]))/,
-      cardtype: "elo",
-    },
-    {
-      mask: "0000 000000 00000",
-      regex: /^3[47]\d{0,13}/,
-      cardtype: "american express",
-    },
-    {
-      mask: "0000 0000 0000 0000",
-      regex: /^(?:6011|65\d{0,2}|64[4-9]\d?)\d{0,12}/,
-      cardtype: "discover",
-    },
-    {
-      mask: "0000 000000 0000",
-      regex: /^3(?:0([0-5]|9)|[689]\d?)\d{0,11}/,
-      cardtype: "diners",
-    },
-    {
-      mask: "0000 000000 00000",
-      regex: /^(?:2131|1800)\d{0,11}/,
-      cardtype: "jcb15",
-    },
-    {
-      mask: "0000 0000 0000 0000",
-      regex: /^(?:35\d{0,2})\d{0,12}/,
-      cardtype: "jcb",
-    },
-    {
-      mask: "0000 0000 0000 0000",
       regex: /^(?:5[0678]\d{0,2}|6304|67\d{0,2})\d{0,12}/,
       cardtype: "maestro",
     },
     {
       mask: "0000 0000 0000 0000",
-      regex: /^62\d{0,14}/,
-      cardtype: "unionpay",
+      regex: /^8\d{0,15}/,
+      cardtype: "rocketseat",
+    },
+    {
+      mask: "0000 000000 00000",
+      regex: /^3[47]\d{0,13}/,
+      cardtype: "amex", //american express
+    },
+    {
+      mask: "0000 0000 0000 0000",
+      regex: /^606282|^3841(?:[0|4|6]{0,1})0/,
+      cardtype: "hipercard",
+    },
+    {
+      mask: "0000 0000 0000 0000",
+      // regex: /^6(?:011|5[0-9]{2})[0-9]{12}$/,
+      regex: /^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/,
+      cardtype: "discover",
+    },
+    {
+      // mask: "0000 000000 0000",
+      mask: "0000 000000 0000",
+      regex: /^3(?:0[0-5]|[68][0-9])[0-9]{11}$/,
+      cardtype: "diners",
+    },
+    {
+      mask: "0000 0000 0000 0000",
+      regex: /(^(352)[8-9](\d{11}$|\d{12}$))|(^(35)[3-8](\d{12}$|\d{13}$))/,
+      cardtype: "jcb",
     },
     {
       mask: "0000 0000 0000 0000",
       cardtype: "default",
     },
   ],
+
   dispatch: function (appended, dynamicMasked) {
     const number = (dynamicMasked.value + appended).replace(/\D/g, "")
-    const foundMask = dynamicMasked.compiledMasks.find(function (item) {
-      return number.match(item.regex)
-    })
-    // console.log(foundMask)
-    return foundMask
+    const cardInfo = dynamicMasked.compiledMasks.find(({ regex }) =>
+      number.match(regex)
+    )
+
+    return cardInfo
   },
+
+  //   const number = (dynamicMasked.value + appended).replace(/\D/g, "")
+  //   const foundMask = dynamicMasked.compiledMasks.find(function (item) {
+  //     return number.match(item.regex)
+  //   })
+  //   // console.log(foundMask)
+  //   return foundMask
+  // },
 }
 const cardNumberMasked = IMask(cardNumber, cardNumberPattern)
 
 // verificar se o botão foi clicado
 const addButton = document.querySelector("#add-card")
+
 addButton.addEventListener("click", () => {
-  // console.log("Você clicou no botão!")
-  alert("Cartão adicionado!")
+  if (
+    (cardNumberMasked.value === "") |
+    (securityCodeMasked.value === "") |
+    (expirationDateMasked.value === "") |
+    (cardHolder.value === "")
+  ) {
+    alert("Favor preencher todos os dados do cartão.")
+  } else {
+    alert("Cartão adicionado com sucesso!")
+    cardNumberMasked.value = ""
+    securityCodeMasked.value = ""
+    expirationDateMasked.value = ""
+    cardHolder.value = ""
+  }
 })
 
 document.querySelector("form").addEventListener("submit", (event) => {
@@ -143,7 +176,7 @@ cardHolder.addEventListener("input", () => {
     cardHolder.value.length === 0 ? "NOME DO TITULAR" : cardHolder.value // se a quantidade de caract for = 0, deixar "NOME DO TITULAR", SENÃO deixa o que estiver digitado
 })
 
-// capturar a digitação do código de segurança
+// capturar a digitação do código cvc
 securityCodeMasked.on("accept", () => {
   updateSecurityCode(securityCodeMasked.value)
 })
