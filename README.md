@@ -18,6 +18,10 @@ Evento exclusivo e gratuito, promovido pela Rocketseat para ensino de tecnologia
 <br>
 
 <p align="center">
+Acesse o projeto: https://explorer-lab-js-cartao.vercel.app/
+</p>
+
+<p align="center">
   <img alt="rocketpay" src=".github/project.png" width="100%">
 </p>
 
