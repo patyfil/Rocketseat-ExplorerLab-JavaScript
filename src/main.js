@@ -68,6 +68,12 @@ const cardNumberPattern = {
     },
     {
       mask: "0000 0000 0000 0000",
+      regex:
+        /^4011(78|79)|^43(1274|8935)|^45(1416|7393|763(1|2))|^50(4175|6699|67[0-6][0-9]|677[0-8]|9[0-8][0-9]{2}|99[0-8][0-9]|999[0-9])|^627780|^63(6297|6368|6369)|^65(0(0(3([1-3]|[5-9])|4([0-9])|5[0-1])|4(0[5-9]|[1-3][0-9]|8[5-9]|9[0-9])|5([0-2][0-9]|3[0-8]|4[1-9]|[5-8][0-9]|9[0-8])|7(0[0-9]|1[0-8]|2[0-7])|9(0[1-9]|[1-6][0-9]|7[0-8]))|16(5[2-9]|[6-7][0-9])|50(0[0-9]|1[0-9]|2[1-9]|[3-4][0-9]|5[0-8]))/,
+      cardtype: "elo",
+    },
+    {
+      mask: "0000 0000 0000 0000",
       cardtype: "default",
     },
   ],
@@ -99,7 +105,7 @@ cardHolder.addEventListener("input", () => {
   const ccHolder = document.querySelector(".cc-holder .value")
   // alterar o conteúdo
   ccHolder.innerText =
-    cardHolder.value.length === 0 ? "FULANO DA SILVA" : cardHolder.value // se a quantidade de caract for = 0, deixar "FULANO DA SILVA", SENÃO deixa o que estiver digitado
+    cardHolder.value.length === 0 ? "NOME DO TITULAR" : cardHolder.value // se a quantidade de caract for = 0, deixar "FULANO DA SILVA", SENÃO deixa o que estiver digitado
 })
 
 // capturar a digitação do código de segurança
@@ -119,7 +125,7 @@ cardNumberMasked.on("accept", () => {
 })
 function updateCardNumber(number) {
   const ccNumber = document.querySelector(".cc-number")
-  ccNumber.innerText = number.length === 0 ? "1234 5678 9012 3456" : number
+  ccNumber.innerText = number.length === 0 ? "0000 0000 0000 0000" : number
 }
 
 // capturar a digitação da data
@@ -128,5 +134,5 @@ expirationDateMasked.on("accept", () => {
 })
 function updateExpirationDate(date) {
   const ccExpiration = document.querySelector(".cc-extra .value")
-  ccExpiration.innerText = date.length === 0 ? "02/32" : date
+  ccExpiration.innerText = date.length === 0 ? "MM/YY" : date
 }
