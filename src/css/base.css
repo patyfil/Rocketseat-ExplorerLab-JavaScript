@@ -50,7 +50,5 @@ body {
 }
 
 section#table {
-  display: flex;
   margin: auto;
-  justify-content: center;
 }
