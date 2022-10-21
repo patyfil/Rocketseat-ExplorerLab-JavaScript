@@ -11,15 +11,13 @@ function setCardType(type) {
     visa: ["#436D99", "#2D57F2"],
     mastercard: ["#DF6F29", "#C69347"],
     rocketseat: ["#0D6F5D", "#C3129C"],
-    amex: ["#7CB0C0", "#5474EB"],
-    cielo: ["#A99E46", "#D32E48"],
-    hipercard: ["#822124", "#A1585B"],
-    diners: ["#D32E48", "#2D57F2"],
-    jcb: ["#D32E48", "#2D57F2"],
-    discover: ["#D32E48", "#2D57F2"],
-    maestro: ["#D32E48", "#2D57F2"],
-    unionpay: ["#A1585B", "#0D6F5D"],
-    paypal: ["#5474EB", "#0D6F5D"],
+    amex: ["#AD9C5C", "#4F9372"],
+    cielo: ["#171C4A", "#04A7EA"],
+    hipercard: ["#890D17", "#CBBCA3"],
+    diners: ["#E1E1E1", "#000000"],
+    jcb: ["#6E561C", "#E8DA9A"],
+    discover: ["#56252F", "#803D4E"],
+    maestro: ["#0179D1", "#D70E02"],
   }
   ccBgColor01.setAttribute("fill", colors[type][0])
   ccBgColor02.setAttribute("fill", colors[type][1])
