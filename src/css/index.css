@@ -2,7 +2,7 @@
 @import "credit-card.css";
 @import "form.css";
 
-@media screen (max-width: 420px) {
+@media (max-width: 420px) {
   :root {
     font-size: 50%;
   }
@@ -19,13 +19,6 @@
   .cc-bg svg {
     width: 100%;
     height: auto;
-  }
-}
-
-@media (max-width: 1350px) {
-  section#table {
-    display: none;
-    visibility: hidden;
   }
 }
 

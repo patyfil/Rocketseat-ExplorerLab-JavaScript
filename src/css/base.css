@@ -20,8 +20,10 @@
 body {
   font-size: 1.6rem;
   background: #121214;
+
   display: flex;
   place-items: center;
+
   min-height: 100vh;
 }
 
@@ -47,8 +49,4 @@ body {
 #app header {
   display: flex;
   align-items: center;
-}
-
-section#table {
-  margin: auto;
 }
