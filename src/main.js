@@ -10,7 +10,7 @@ function setCardType(type) {
     default: ["black", "gray"],
     visa: ["#436D99", "#2D57F2"],
     mastercard: ["#DF6F29", "#C69347"],
-    rocketseat: ["#0D6F5D", "#C3129C"],
+    rocketseat: ["#000000", "#694DB5"],
     amex: ["#AD9C5C", "#4F9372"],
     cielo: ["#171C4A", "#04A7EA"],
     hipercard: ["#890D17", "#CBBCA3"],
